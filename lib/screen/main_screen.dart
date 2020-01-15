@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:revival_tv/bottom_menu.dart';
 import 'package:revival_tv/screen/home_screen.dart';
-import 'package:revival_tv/screen/sho_screen.dart';
+import 'package:revival_tv/screen/shop_screen.dart';
 
 
 
@@ -69,8 +69,13 @@ class _MainAppState extends State<MainScreen> with TickerProviderStateMixin{
   int _selectedIndex = 0;
   _onSelectItem(int index) {
     setState(() => _selectedDrawerIndex = index);
-    if(index == 7){
-      Navigator.of(context).pop(false);
+    if(_selectedDrawerIndex == 7){
+      SchedulerBinding.instance.addPostFrameCallback((_) {
+        Navigator.push(
+            context,
+            new MaterialPageRoute(
+                builder: (context) => new Shop()));
+      });
     }
     else {
       Navigator.of(context).pop();
@@ -121,13 +126,7 @@ class _MainAppState extends State<MainScreen> with TickerProviderStateMixin{
       case 6:
         return new Text("Belum Tersedia");
       case 7:
-        return SchedulerBinding.instance.addPostFrameCallback((_) {
-          // add your code here.
-          Navigator.pushReplacement(
-              context,
-              new MaterialPageRoute(
-                  builder: (context) => new Shop()));
-        });
+        return MyApp();
       default:
         return new Text("Error");
     }
@@ -254,9 +253,11 @@ class _MainAppState extends State<MainScreen> with TickerProviderStateMixin{
                 child: ListView(
                   children: <Widget>[
                     SizedBox(
-                      height: 55.0,
+                      height: 60.0,
                       child:DrawerHeader(
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
                           children: <Widget>[
                             Text('RevivalTV',style: TextStyle(color: Colors.white,fontSize: 14.0),textAlign: TextAlign.center,),
                             Text('MENU',style: TextStyle(color: Colors.amber[800],fontSize: 10.0),textAlign: TextAlign.center,),
@@ -275,25 +276,22 @@ class _MainAppState extends State<MainScreen> with TickerProviderStateMixin{
                 ),
               ),
               Container(
-                height: 80.0,
+                height: 100.0,
                 child: Align(
                   alignment: FractionalOffset.bottomCenter,
                   child: Container(
                     child: Column(
                       children: <Widget>[
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            Spacer(),
-                            Image.asset("assets/icons/logo_white_type.png",scale: 40.0,),
-                            Spacer(),
+                            Image.asset("assets/icons/logo_white_type.png", fit: BoxFit.contain,scale: 40.0,),
                             Container(
-                              width: 1,
+                              width: 1.0,
                               height: 50.0,
                               color: Colors.grey,
                             ),
-                            Spacer(),
-                            Image.asset("assets/icons/icon_revival_red.png",scale: 80.0,),
-                            Spacer(),
+                            Image.asset("assets/icons/logo_white_type.png",fit: BoxFit.contain,scale: 40.0,),
                           ],
                         ),
                       ],
@@ -324,4 +322,5 @@ class _MainAppState extends State<MainScreen> with TickerProviderStateMixin{
       ),
     );
   }
+
 }

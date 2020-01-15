@@ -25,6 +25,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   grouped_list: ^1.2.1
+  badges: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +51,8 @@ flutter:
    - assets/icons/icon_score.png
    - assets/icons/logo_white_type.png
    - assets/icons/icon_revival_red.png
+   - assets/icons/logo_revival_shop.png
+   - assets/icons/action_shop_bag.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
