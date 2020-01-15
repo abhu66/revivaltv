@@ -1,4 +1,5 @@
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -169,40 +170,47 @@ class _MainAppState extends State<MainScreen> with TickerProviderStateMixin{
         bottomOpacity: 0.1,
         elevation: 1.0,
         centerTitle: true,
-        title: Container(
-          padding: EdgeInsets.only(top: 10.0),
-          child: FlatButton(
-            onPressed: () {
-              setState(() {
-                if (_isDown == false) {
-                  _isDown = true;
-                } else {
-                  _isDown = false;
-                }
-              });
-            },
-            color: Colors.red,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  titleName == '' ? listGameTitle[0].toString() : '$titleName',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                  ),
-                ),
-                Icon(
-                  _isDown == true
-                      ? Icons.keyboard_arrow_down
-                      : Icons.keyboard_arrow_up,
-                  color: Colors.white,
-                )
-              ],
-            ),
-          ),
+        title:Container(
+
+              child :FlatButton(
+                color: Colors.red,
+                onPressed: () {
+                  setState(() {
+                    if (_isDown == false) {
+                      _isDown = true;
+                    } else {
+                      _isDown = false;
+                    }
+                  });
+                },
+                child:
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Flexible(
+                          child: Text(
+                            titleName == '' ? listGameTitle[0].toString() : '$titleName',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          _isDown == true
+                              ? Icons.keyboard_arrow_down
+                              : Icons.keyboard_arrow_up,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+              ),
         ),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.person,color: Colors.white,),
+          onPressed: (){},)
+        ],
       ),
       body: Stack(
         children: <Widget>[

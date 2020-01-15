@@ -63,14 +63,11 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
-          child:  AppBar(
+        appBar:AppBar(
             flexibleSpace: SafeArea(
               child: getTabBar(),
             ),
           ),
-        ),
         body: getTabBarPages());
   }
 
