@@ -75,7 +75,9 @@ class _MainAppState extends State<MainScreen> with TickerProviderStateMixin{
         Navigator.push(
             context,
             new MaterialPageRoute(
-                builder: (context) => new Shop()));
+                builder: (context) => new Shop()
+            )
+        );
       });
     }
     else {

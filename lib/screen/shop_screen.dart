@@ -4,6 +4,9 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:revival_tv/models/Product.dart';
+import 'package:revival_tv/widets/widget_grid_product.dart';
+import 'package:revival_tv/widets/widget_slider_1.dart';
 
 
 class DrawerItemShop {
@@ -49,6 +52,32 @@ class _ShopState extends State<Shop>{
     }
   }
 
+  final List<Product> products = <Product>[
+    Product(title: "LANYARD RVL BY REVIVAL TV",desc: "Beraktivitas dengan gaya. Beli Lanyard by RVL sekarang!. Cocok untukke kantor atau ke kamput.",img: "assets/lanyard/lanyard_2.png",needPromo: false,price: "150.000"),
+    Product(title: "GAMER PEDULI LINGKUNGAN",
+        desc: "Peduli lingkungan dan tetap bergaya, kenapa tidak ? Kurangi penggunaan plastik. Dapatkan Totebag Gamers Dont Die by RVL hanya di RVL Shop",img: "assets/lanyard/tote_bag_mocukp_2.png",needPromo: false,price: "175.000"),
+    Product(title: "ONE SHOT ONE KILL BY RVL",desc: "Dapatkan koleksi T-Shirt gaming menarik dari RVL Shop. Stock terbatas, buruan beli!.",img: "assets/lanyard/web_fnt_7.png",needPromo: true,price: "100.000"),
+    Product(title: "LANYARD RVL BY REVIVAL TV",desc: "Beraktivitas dengan gaya. Beli Lanyard by RVL sekarang!. Cocok untukke kantor atau ke kamput.",img: "assets/lanyard/lanyard_2.png",needPromo: false,price: "150.000"),
+    Product(title: "GAMER PEDULI LINGKUNGAN",
+        desc: "Peduli lingkungan dan tetap bergaya, kenapa tidak ? Kurangi penggunaan plastik. Dapatkan Totebag Gamers Dont Die by RVL hanya di RVL Shop",img: "assets/lanyard/tote_bag_mocukp_2.png",needPromo: false,price: "150.000"),
+    Product(title: "ONE SHOT ONE KILL BY RVL",desc: "Dapatkan koleksi T-Shirt gaming menarik dari RVL Shop. Stock terbatas, buruan beli!.",img: "assets/lanyard/web_fnt_7.png",needPromo: true, price: "100.000"),
+    Product(title: "LANYARD RVL BY REVIVAL TV",desc: "Beraktivitas dengan gaya. Beli Lanyard by RVL sekarang!. Cocok untukke kantor atau ke kamput.",img: "assets/lanyard/lanyard_2.png",needPromo: false,price: "150.000"),
+    Product(title: "GAMER PEDULI LINGKUNGAN",
+        desc: "Peduli lingkungan dan tetap bergaya, kenapa tidak ? Kurangi penggunaan plastik. Dapatkan Totebag Gamers Dont Die by RVL hanya di RVL Shop",img: "assets/lanyard/tote_bag_mocukp_2.png",needPromo: false,price: "175.000"),
+    Product(title: "ONE SHOT ONE KILL BY RVL",desc: "Dapatkan koleksi T-Shirt gaming menarik dari RVL Shop. Stock terbatas, buruan beli!.",img: "assets/lanyard/web_fnt_7.png",needPromo: true,price: "150.000"),
+
+  ];
+
+
+  int countShopChart = 0;
+  int countFav = 0;
+
+  @override
+  void initState(){
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -82,6 +111,7 @@ class _ShopState extends State<Shop>{
       key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        elevation: 0.0,
         leading: Container(
           height: 100.0,
             padding: EdgeInsets.only(left: 10.0),
@@ -96,7 +126,7 @@ class _ShopState extends State<Shop>{
           Badge(
             badgeColor: Colors.black,
             position: BadgePosition.topRight(top:5, right: 5),
-            badgeContent: Text('0',style: TextStyle(color: Colors.white),),
+            badgeContent: Text(countFav.toString(),style: TextStyle(color: Colors.white),),
             child:  IconButton(icon: Icon(Icons.favorite_border,color: Colors.black,),
               onPressed: (){},
             ),
@@ -104,7 +134,7 @@ class _ShopState extends State<Shop>{
           Badge(
             badgeColor: Colors.black,
             position: BadgePosition.topRight(top:5, right: 5),
-            badgeContent: Text('2',style: TextStyle(color: Colors.white)),
+            badgeContent: Text(countShopChart.toString(),style: TextStyle(color: Colors.white)),
             child:  IconButton(
               icon: Icon(Icons.shopping_basket,color: Colors.black,),
               onPressed: (){
@@ -119,7 +149,14 @@ class _ShopState extends State<Shop>{
           )
         ],
       ),
-      body: Center(child : _getDrawerItemWidget(_selectedDrawerIndex)),
+      body:SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            WidgetSlider1(products: products),
+            WidgetGridProduct(productList: products,)
+          ],
+        ),
+      ),
       endDrawer: Drawer(
         child: Container(color: Colors.white,
           child : Column(

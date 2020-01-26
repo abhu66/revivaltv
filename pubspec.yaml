@@ -27,6 +27,7 @@ dependencies:
   grouped_list: ^1.2.1
   badges: ^1.1.0
   auto_size_text: ^2.1.0
+  carousel_slider: ^1.4.1
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +55,12 @@ flutter:
    - assets/icons/icon_revival_red.png
    - assets/icons/logo_revival_shop.png
    - assets/icons/action_shop_bag.png
+   - assets/lanyard/lanyard_2.png
+   - assets/lanyard/tote_bag_mocukp_2.png
+   - assets/lanyard/web_fnt_7.png
+   - assets/lanyard/thumbnail_1.jpg
+   - assets/lanyard/thumbnail_2.jpg
+   - assets/lanyard/thumbnail_3.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
